@@ -19,29 +19,29 @@ class Concentration
     // get and set
     // 初始化和刚开始还没有使用这个值得时候，这个只是不存在的，只有当我们需要使用它，或者给他复制的时候才存在
     // 对其进行setd之后，可以进行一些列的全局操作
-        var indexOfOneAndOnlyFaceUpCard : Int?
-//    var indexOfOneAndOnlyFaceUpCard : Int? {
-//        get{
-//            var foundIndex: Int?
-//            for index in cards.indices{
-//                if cards[index].isFaceUp == true{
-//                    if foundIndex == nil{
-//                        foundIndex = index
-//                    }else{
-//                        return nil
-//                    }
-//
-//                }
-//            }
-//            return foundIndex
-//        }
-//        set{
-//            for index in cards.indices{
-//                cards[index].isFaceUp = (newValue == index)
-//            }
-//        }
-//    }
-    
+    var indexOfOneAndOnlyFaceUpCard : Int?{
+        get{
+            print("the index of one and ... is working with get method")
+            var foundIndex:Int?
+            for index in cards.indices{
+                if cards[index].isFaceUp == true{
+                    if foundIndex == nil{
+                        foundIndex = index
+                    }else{
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set{
+            print("the index of one and ... is working with set method")
+            for index in cards.indices{
+                cards[index].isFaceUp = (newValue == index)
+            }
+        }
+    }
+
     
     func chooseCard(at index: Int){
         if !cards[index].isMatched{
@@ -52,15 +52,11 @@ class Concentration
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             }else{
                 // * 刚刚开始，或者已经有两个面朝上了
-                for flipDownIndex in cards.indices{
-                    cards[flipDownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
+            print("getting is working here")
         }
         
     }
